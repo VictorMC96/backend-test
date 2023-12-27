@@ -15,7 +15,7 @@ Principalmente los siguientes aspectos:
 1. Recomendamos emplear un máximo de **3 (tres) horas** y enviar todo lo que puedas.
 2. Se requiere de una **cuenta de GitHub** para realizar este ejercicio.
 3. **Antes de comenzar a programar:**
-    * Realizar un `Fork` de este repositorio (https://github.com/ORCAapplicants/backend-test).
+    * Realizar un `Fork` de este repositorio ([https://github.com/ORCAapplicants/backend-test](https://github.com/VictorMC96/backend-test)).
     * Clonar el fork a su máquina local  `git clone git@github.com:USERNAME/FORKED-PROJECT.git`
     * Crear un `branch` en su cuenta de GitHub utilizando su nombre completo.
 6. **Al finalizar**, existen 2 (dos) opciones para entregar su proyecto:
