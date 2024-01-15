@@ -10,17 +10,19 @@ Principalmente los siguientes aspectos:
 * Calidad del código entregado (estructura y buenas prácticas),
 * Eficiencia de los algoritmos entregados,
 * Familiaridad con Frameworks y plataformas de desarrollo.
+* Familaridad con el desarrollo de pruebas unitarias.
 
 ## IMPORTANTE
 1. Realizar el ejercicio con spring boot basandose en apis
 2. Estructura del proyecto maven para poder ejecutarse y evaluarlo
-3. Recomendamos emplear un máximo de **3 (tres) horas** y enviar todo lo que puedas.
-4. Se requiere de una **cuenta de GitHub** para realizar este ejercicio.
-5. **Antes de comenzar a programar:**
+3. Agregar pruebas unitarias (solo las necesarias o puntos más criticos de la funcionalidad)
+4. Recomendamos emplear un máximo de **3 (tres) horas** y enviar todo lo que puedas.
+5. Se requiere de una **cuenta de GitHub** para realizar este ejercicio.
+6. **Antes de comenzar a programar:**
     * Realizar un `Fork` de este repositorio
     * Clonar el fork a su máquina local  `git clone git@github.com:USERNAME/FORKED-PROJECT.git`
     * Crear un `branch` en su cuenta de GitHub utilizando su nombre completo.
-6. **Al finalizar**, existen 2 (dos) opciones para entregar su proyecto:
+7. **Al finalizar**, existen 2 (dos) opciones para entregar su proyecto:
     * 1) Realizar un `Commit` de su proyecto, **enviar un `Pull Request` al branch con su NOMBRE**, y notificar a la siguiente dirección de correo electrónico  [vmiranda@neology.mx](mailto:vmiranda@neology.mx).
     * 2) Crear un archivo comprimido (_.zip_ o _.rar_) de su proyecto y enviar a la siguiente dirección de correo electrónico  [vmiranda@neology.mx](mailto:vmiranda@neology.mx).
 
