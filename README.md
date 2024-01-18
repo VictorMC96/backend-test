@@ -8,10 +8,11 @@ cd parking-neology
 ./mvnw spring-boot:run
 
 ## Diagrama de clases
-![ Casos de uso]()
+![ Diagrama de clases](https://github.com/Argenis616/backend-test/blob/jorge/argenis/hernandez/chavez/img/claseNeology.png)
 
 ## diagrama de secuencia
-![ Casos de uso]()
+![ Diagrama de secuencia](https://github.com/Argenis616/backend-test/blob/jorge/argenis/hernandez/chavez/img/sequenceNeology.png)
+
 ### Casos de uso
 
 ###### **Caso de uso "Registra entrada"**
