@@ -5,6 +5,7 @@ abrir carpeta parking-neology y correr ParkingNeologyApplication con el boton RU
 
 ## Terminal
 cd parking-neology
+
 ./mvnw spring-boot:run
 
 ## Diagrama de clases
