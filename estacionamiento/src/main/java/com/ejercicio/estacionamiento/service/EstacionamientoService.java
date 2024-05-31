@@ -8,6 +8,10 @@ import com.ejercicio.estacionamiento.repository.VehiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
@@ -49,6 +53,30 @@ public class EstacionamientoService {
         estancia.setHoraEntrada(Calendar.getInstance());
         estancia = estanciaRepository.save(estancia);
 
+        System.out.println("Entrada registrada para " + vehiculo.getTipo() + " con placa " + placa + " a las " + estancia.getHoraEntrada().getTime());
+
+        return estancia;
+    }
+
+    public Estancia registrarEntradaOficial(String placa) {
+        Vehiculo vehiculo = vehiculoRepository.findByPlaca(placa)
+                .orElseThrow(() -> new PlacaNoEncontradaException("No se encontró un vehículo oficial con esta placa"));
+        Estancia estancia = new Estancia();
+        estancia.setVehiculo(vehiculo);
+        estancia.setHoraEntrada(Calendar.getInstance());
+        estanciaRepository.save(estancia);
+        System.out.println("Entrada registrada para vehículo oficial con placa " + placa + " a las " + estancia.getHoraEntrada().getTime());
+        return estancia;
+    }
+
+    public Estancia registrarEntradaResidente(String placa) {
+        Vehiculo vehiculo = vehiculoRepository.findByPlaca(placa)
+                .orElseThrow(() -> new PlacaNoEncontradaException("No se encontró un vehículo residente con esta placa"));
+        Estancia estancia = new Estancia();
+        estancia.setVehiculo(vehiculo);
+        estancia.setHoraEntrada(Calendar.getInstance());
+        estanciaRepository.save(estancia);
+        System.out.println("Entrada registrada para vehículo residente con placa " + placa + " a las " + estancia.getHoraEntrada().getTime());
         return estancia;
     }
 
@@ -69,13 +97,14 @@ public class EstacionamientoService {
             case "residente":
                 vehiculo.setTiempoAcumulado(vehiculo.getTiempoAcumulado() + minutos);
                 vehiculoRepository.save(vehiculo);
+                System.out.println("Tiempo total acumulado para el residente con placa " + placa + ": " + vehiculo.getTiempoAcumulado() + " minutos");
                 break;
             case "no_residente":
                 double importe = minutos * 0.5;
                 System.out.println("Importe a pagar por " + minutos + " minutos: $" + importe);
                 break;
             case "oficial":
-
+                System.out.println("Vehículo oficial con placa " + placa + " estuvo " + minutos + " minutos. No hay cargo.");
                 break;
             default:
                 throw new IllegalArgumentException("Tipo de vehículo desconocido");
@@ -101,6 +130,11 @@ public class EstacionamientoService {
     }
 
     public String generarInformePagosResidentes(String nombreArchivo) {
+
+        if (!nombreArchivo.toLowerCase().endsWith(".txt")) {
+            nombreArchivo += ".txt";
+        }
+
         List<Vehiculo> residentes = vehiculoRepository.findByTipo("residente");
         if (residentes.isEmpty()) {
             return "No hay vehículos residentes registrados.";
@@ -114,6 +148,17 @@ public class EstacionamientoService {
             informe.append(String.format("%s\t%d\t%.2f\n", vehiculo.getPlaca(), vehiculo.getTiempoAcumulado(), cantidadAPagar));
         }
 
-        return informe.toString();
+        System.out.println(informe.toString());
+
+
+        try {
+            Files.write(Paths.get(nombreArchivo), informe.toString().getBytes(StandardCharsets.UTF_8));
+            System.out.println("Informe generado correctamente en " + Paths.get(nombreArchivo).toAbsolutePath().toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Error al generar el informe.";
+        }
+
+        return "Informe generado correctamente en " + Paths.get(nombreArchivo).toAbsolutePath().toString();
     }
 }

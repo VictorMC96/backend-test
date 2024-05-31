@@ -24,15 +24,17 @@ public class EstacionamientoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) {
         Scanner scanner = new Scanner(System.in);
-        while (true) {
+        boolean continuar = true;
+
+        while (continuar) {
+            System.out.println("Bienvenido al Sistema de Registro del Estacionamiento. Conoce las opciones disponibles.");
             System.out.println("1. Registrar entrada");
             System.out.println("2. Registrar salida");
             System.out.println("3. Dar de alta vehículo oficial");
             System.out.println("4. Dar de alta vehículo residente");
             System.out.println("5. Comenzar mes");
             System.out.println("6. Generar informe de pagos de residentes");
-            System.out.println("0. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Ingresa una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine();
 
@@ -41,8 +43,6 @@ public class EstacionamientoApplication implements CommandLineRunner {
                     System.out.print("Ingrese la placa del vehículo: ");
                     String placaEntrada = scanner.nextLine();
                     Estancia entrada = estacionamientoService.registrarEntrada(placaEntrada);
-                    System.out.println("Entrada registrada: " + entrada.getHoraEntrada().getTime());
-                    System.out.println("Vehículo registrado como no residente. Se aplicará la tarifa correspondiente.");
                     break;
                 case 2:
                     boolean salidaRegistrada = false;
@@ -69,14 +69,14 @@ public class EstacionamientoApplication implements CommandLineRunner {
                 case 3:
                     System.out.print("Ingrese la placa del vehículo oficial: ");
                     String placaOficial = scanner.nextLine();
-                    Vehiculo oficial = estacionamientoService.registrarVehiculo(placaOficial, "oficial");
-                    System.out.println("Vehículo oficial registrado: " + oficial);
+                    estacionamientoService.registrarVehiculo(placaOficial, "oficial");
+                    estacionamientoService.registrarEntradaOficial(placaOficial);
                     break;
                 case 4:
                     System.out.print("Ingrese la placa del vehículo residente: ");
                     String placaResidente = scanner.nextLine();
-                    Vehiculo residente = estacionamientoService.registrarVehiculo(placaResidente, "residente");
-                    System.out.println("Vehículo residente registrado: " + residente);
+                    estacionamientoService.registrarVehiculo(placaResidente, "residente");
+                    estacionamientoService.registrarEntradaResidente(placaResidente);
                     break;
                 case 5:
                     estacionamientoService.comenzarMes();
@@ -92,12 +92,11 @@ public class EstacionamientoApplication implements CommandLineRunner {
                         System.out.println("Informe generado:\n" + informe);
                     }
                     break;
-                case 0:
-                    System.out.println("Saliendo...");
-                    return;
                 default:
                     System.out.println("Opción no válida. Intente nuevamente.");
             }
         }
+
+        scanner.close();
     }
 }
