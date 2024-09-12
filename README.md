@@ -16,7 +16,7 @@ Principalmente los siguientes aspectos:
 1. Realizar el ejercicio con spring boot basandose en apis
 2. Estructura del proyecto maven para poder ejecutarse y evaluarlo
 3. Agregar pruebas unitarias (solo las necesarias o puntos más criticos de la funcionalidad)
-4. Recomendamos emplear un máximo de **3 (tres) horas** y enviar todo lo que puedas.
+4. Recomendamos emplear un máximo de **3 (tres) horas** y enviar todo lo que se pueda entregar en ese rango de tiempo.
 5. Se requiere de una **cuenta de GitHub** para realizar este ejercicio.
 6. **Antes de comenzar a programar:**
     * Realizar un `Fork` de este repositorio
@@ -25,7 +25,7 @@ Principalmente los siguientes aspectos:
 7. **Al finalizar**, existen 2 (dos) opciones para entregar su proyecto:
     * 1) Realizar un `Commit` de su proyecto, **enviar un `Pull Request` al branch con su NOMBRE**, y notificar a la siguiente dirección de correo electrónico  [vmiranda@neology.mx](mailto:vmiranda@neology.mx).
     * 2) Crear un archivo comprimido (_.zip_ o _.rar_) de su proyecto y enviar a la siguiente dirección de correo electrónico  [vmiranda@neology.mx](mailto:vmiranda@neology.mx).
-
+8. Realizar la prueba tecnica en base al lenguaje de la posición (java o go land)
 ## EJERCICIOS
 
 ### Ejercicio #
