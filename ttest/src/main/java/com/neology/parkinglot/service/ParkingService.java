@@ -1,6 +1,7 @@
 package com.neology.parkinglot.service;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,13 +35,18 @@ public class ParkingService {
 		return (ResponseEntity<String>) parkingLotBusiness.registerVehicleCheckOut(request, httpServlet.getSession(false));
 	}
 	
-	@PostMapping(value="registercheckout", consumes=MediaType.TEXT_PLAIN_VALUE, produces=MediaType.TEXT_PLAIN_VALUE)
+	@PostMapping(value="registerOfficial", consumes=MediaType.TEXT_PLAIN_VALUE, produces=MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> registerOfficialVehicle(@RequestBody String request, HttpServletRequest httpServlet){
 		return (ResponseEntity<String>) parkingLotBusiness.registerOfficialVehicle(request, httpServlet.getSession(false));
 	}
 	
-	@PostMapping(value="registercheckout", consumes=MediaType.TEXT_PLAIN_VALUE, produces=MediaType.TEXT_PLAIN_VALUE)
+	@PostMapping(value="registerresident", consumes=MediaType.TEXT_PLAIN_VALUE, produces=MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> registerResidentVehicle(@RequestBody String request, HttpServletRequest httpServlet){
 		return (ResponseEntity<String>) parkingLotBusiness.registerResidentVehicle(request, httpServlet.getSession(false));
+	}
+	
+	@GetMapping(value="residentPayment")
+	public void registerResidentVehicle(HttpServletRequest httpServlet){
+		parkingLotBusiness.residentPayment(httpServlet.getSession(false));
 	}
 }

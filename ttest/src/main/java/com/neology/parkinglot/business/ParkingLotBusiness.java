@@ -12,5 +12,5 @@ public interface ParkingLotBusiness {
 	ResponseEntity<String> registerOfficialVehicle(String request, HttpSession session);
 	ResponseEntity<String> registerResidentVehicle(String request, HttpSession session);
 	ResponseEntity<String> resetMonth(String request, HttpSession session);
-	ResponseEntity<String> residentPayment(String request, HttpSession session);
+	void residentPayment(HttpSession session);
 }

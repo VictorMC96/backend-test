@@ -14,6 +14,7 @@ public class Vehicle implements Serializable{
 	private Date checkOut;
 	private Double total;
 	private Integer totalTime;
+	private String type;
 	
 	public String getVpNumber() {
 		return vpNumber;
@@ -42,12 +43,20 @@ public class Vehicle implements Serializable{
 	public Integer getTotalTime() {
 		return totalTime;
 	}
-	public void setTotalTime(int totalTime) {
+	public void setTotalTime(Integer totalTime) {
 		this.totalTime = totalTime;
 	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	@Override
 	public String toString() {
 		return "Vehicle [vpNumber=" + vpNumber + ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", total=" + total
-				+ ", totalTime=" + totalTime + "]";
+				+ ", totalTime=" + totalTime + ", type=" + type + "]";
 	}
+	
 }

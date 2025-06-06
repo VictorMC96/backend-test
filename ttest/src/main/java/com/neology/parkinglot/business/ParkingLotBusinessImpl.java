@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.neology.parkinglot.dao.ParkingLotDao;
 import com.neology.parkinglot.entity.dto.LicensePlateNumberDTO;
+import com.neology.parkinglot.entity.vehicles.ConstantEnum;
+import com.neology.parkinglot.entity.vehicles.FormatTypeEnum;
 import com.neology.parkinglot.entity.vehicles.Vehicle;
+import com.neology.parkinglot.util.ReportGenerator;
+import com.neology.parkinglot.util.VehicleUtil;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +45,7 @@ public class ParkingLotBusinessImpl implements ParkingLotBusiness{
 		
 		vehicle.setCheckIn(date);
 		
+		parkingLotDao.saveVehicle(vehicle);
 		
 		return new ResponseEntity<> ("OK",HttpStatus.OK);
 	}
@@ -64,6 +69,9 @@ public class ParkingLotBusinessImpl implements ParkingLotBusiness{
 		
 		vehicle.setCheckOut(date);
 		
+		VehicleUtil.processVehicle(vehicle.getType(), dateIn, dateIn, vehicle);
+		
+		parkingLotDao.saveVehicle(vehicle);
 		
 		return new ResponseEntity<> ("OK",HttpStatus.OK);
 	}
@@ -79,6 +87,8 @@ public class ParkingLotBusinessImpl implements ParkingLotBusiness{
 			e.getCause();
 		}
 		
+		registerVehicle(officialVehicleRequest.getVpNumber(),FormatTypeEnum.OFICIAL);
+		
 		return null;
 	}
 
@@ -93,6 +103,8 @@ public class ParkingLotBusinessImpl implements ParkingLotBusiness{
 			e.getCause();
 		}
 		
+		registerVehicle(residentVehicleRequest.getVpNumber(),FormatTypeEnum.RESIDENT);
+		
 		return null;
 	}
 
@@ -103,9 +115,19 @@ public class ParkingLotBusinessImpl implements ParkingLotBusiness{
 	}
 
 	@Override
-	public ResponseEntity<String> residentPayment(String request, HttpSession session) {
-		// TODO Auto-generated method stub
-		return null;
+	public void residentPayment(HttpSession session) {
+		ReportGenerator.generarInformeResidentes("informe_residentes.txt");
 	}
+	
+ private void registerVehicle(String plate, FormatTypeEnum type) {
+	 Vehicle vehicle = new Vehicle();
+	 vehicle.setCheckIn(new Date());
+	 vehicle.setCheckOut(new Date());
+	 vehicle.setTotal(0.0);
+	 vehicle.setTotalTime(0);
+	 vehicle.setVpNumber(plate);
+	 vehicle.setType(type.toString());
+	 parkingLotDao.saveVehicle(vehicle);
+ }
 
 }
