@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="utf-8">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	
+	<br>
+	
+	<div class="container">
+	   <div class="row">
+	      <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+	           <h1 class="text-center" th:text="${titulo}"></h1>
+	           <div class="card-body">
+				   <form th:action="@{/salida}" th:object="${vehiculo}" method="post">
+	                 <input type="hidden" th:field="*{idVehiculo}" th:value="${vehiculo.idVehiculo}"/>
+	                 <div class="form-group">
+	                    <label>Numero Placa: </label>
+	                    <input type="text" th:field="*{numeroPlaca}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+	                    <small class="form-text text-danger" th:if="${#fields.hasErrors('numeroPlaca')}" th:errors="*{numeroPlaca}"></small>
+	                 </div>
+					  <div class="form-group">
+						  <label>Fecha Entrada: </label>
+						  <input type="hidden" th:field="*{fechaEntrada}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+						  <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaEntrada')}" th:errors="*{fechaEntrada}"></small>
+					  </div>
+					  <div class="form-group">
+						  <label>Fecha Salida: </label>
+						  <input type="datetime" th:field="*{fechaSalida}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+						  <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaSalida')}" th:errors="*{fechaSalida}"></small>
+					  </div>
+	                 <div class="form-group">
+	                    <label>Tipo de Vehiculo : </label>
+	                    <input type="hidden" th:field="*{tipoVehiculo}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+	                    <small class="form-text text-danger" th:if="${#fields.hasErrors('tipoVehiculo')}" th:errors="*{tipoVehiculo}"></small>
+	                 </div>
+
+	                 <div class="form-group">
+	                    <label>Importe : </label>
+	                    <input type="hidden" th:field="*{importe}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+	                    <small class="form-text text-danger" th:if="${#fields.hasErrors('importe')}" th:errors="*{importe}"></small>
+	                 </div>
+	                 <div class="box-footer"> 
+	                     <input type="submit" value="Guardar" class="btn btn-primary">
+	                 </div>
+	              </form>
+	           </div>
+	      </div>
+	   </div>
+	</div>
+	
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="layout/layout :: head">
+<meta charset="utf-8">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="py-4 ml-5 mr-5">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<a th:href="@{/form}" class="btn btn-primary">Registrar entrada</a>
+					<a th:href="@{/altaVehiculo}" class="btn btn-primary">Alta tipo de vehículo</a>
+
+					<a sec:authorize="hasRole('ADMIN')" th:href="@{/exportarPDF}"
+						class="btn btn-success">Exportar a PDF</a>
+				</h4>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Numero de placa</th>
+							<th>Fecha entrada</th>
+							<th>Fecha salida</th>
+							<th>Tipo de vehículo</th>
+							<th>Importe</th>
+							<th>Tiempo de Estacionamiento (minutos)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="vehiculo : ${vehiculos}">
+							<td th:text="${vehiculo.idVehiculo}"></td>
+							<td th:text="${vehiculo.numeroPlaca}"></td>
+							<td th:text="${vehiculo.fechaEntrada}"></td>
+							<td th:text="${vehiculo.fechaSalida}"></td>
+							<td th:if="${vehiculo.tipoVehiculo != null}" th:text="${vehiculo.tipoVehiculo.vehiculoTipo}"></td>
+							<td th:if="${vehiculo.tipoVehiculo == null}" th:text="${vehiculo.tipoVehiculo}"></td>
+							<td th:text="${vehiculo.importe}"></td>
+							<td th:text="${vehiculo.tiempo}"></td>
+							<td sec:authorize="hasRole('ADMIN')">
+								<a th:href="@{/salida/} + ${vehiculo.idVehiculo}" class="btn btn-warning btn-sm">Registrar salida</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
