@@ -1,10 +1,6 @@
 package com.parking.controller;
 
-import com.parking.dto.Car;
-import com.parking.repository.ParkingSystemRepository;
 import com.parking.service.ParkingSystemService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,28 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
-import java.sql.Timestamp;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Calendar;
-
 @RestController
 @RequestMapping("/parking")
 public class ParkingSystemController {
-    private static final Logger logger = LoggerFactory.getLogger(ParkingSystemController.class);
-    private static final String OFFICIAL = "OFFICIAL";
-    private static final String RESIDENT = "RESIDENT";
-    private static final String NON_RESIDENT = "NON_RESIDENT";
-    private static final Double RESIDENT_FEE = 0.05;
-    private static final Double NON_RESIDENT_FEE = 0.5;
 
-    private final ParkingSystemRepository parkingSystemRepository;
     private final ParkingSystemService parkingSystemService;
 
-    public ParkingSystemController(ParkingSystemRepository parkingSystemRepository, ParkingSystemService parkingSystemService) {
-        this.parkingSystemRepository = parkingSystemRepository;
+    public ParkingSystemController(ParkingSystemService parkingSystemService) {
         this.parkingSystemService = parkingSystemService;
     }
 
