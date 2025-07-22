@@ -1,30 +1,28 @@
 package com.parking;
 
 import com.parking.controller.ParkingSystemController;
-import com.parking.dto.Car;
-import com.parking.repository.ParkingSystemRepository;
+
+import com.parking.service.ParkingSystemService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.sql.Timestamp;
-import java.util.Arrays;
-import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.argThat;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class ParkingSystemControllerTest {
 
     @Mock
-    private ParkingSystemRepository parkingSystemRepository;
+    private ParkingSystemService parkingSystemService;
 
     @InjectMocks
     private ParkingSystemController controller;
@@ -41,169 +39,162 @@ class ParkingSystemControllerTest {
     @Test
     void addCarAddANewCar() {
         String plate = "NEW123";
-        when(parkingSystemRepository.existsByPlate(plate)).thenReturn(false);
-
+        when(parkingSystemService.addCar(eq(plate), any(UriComponentsBuilder.class)))
+                .thenReturn(ResponseEntity.created(ucb.path("cars/{licensePlate}")
+                                .buildAndExpand(plate)
+                                .toUri())
+                        .build());
         ResponseEntity<Void> response = controller.addCar(plate, ucb);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        verify(parkingSystemRepository).save(any(Car.class));
+        verify(parkingSystemService).addCar(eq(plate), any(UriComponentsBuilder.class));
     }
 
     @Test
     void addCarUpdatesAnExistingCar() {
         String plate = "EXIST123";
-        Car existingCar = new Car(plate, "RESIDENT", false, 10, new Timestamp(System.currentTimeMillis()), null);
-        when(parkingSystemRepository.existsByPlate(plate)).thenReturn(true);
-        when(parkingSystemRepository.findByPlate(plate)).thenReturn(existingCar);
-        when(parkingSystemRepository.findInsideParkingLotByPlate(plate)).thenReturn(false);
+        when(parkingSystemService.addCar(eq(plate), any(UriComponentsBuilder.class)))
+                .thenReturn(ResponseEntity.ok().build());
 
         ResponseEntity<Void> response = controller.addCar(plate, ucb);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        verify(parkingSystemRepository).save(any(Car.class));
+        verify(parkingSystemService).addCar(eq(plate), any(UriComponentsBuilder.class));
     }
 
     @Test
     void addCarACarIsInTheParkingLot() {
         String plate = "INSIDE123";
-        Car existingCar = new Car(plate, "RESIDENT", true, 10, new Timestamp(System.currentTimeMillis()), null);
-        when(parkingSystemRepository.existsByPlate(plate)).thenReturn(true);
-        when(parkingSystemRepository.findByPlate(plate)).thenReturn(existingCar);
-        when(parkingSystemRepository.findInsideParkingLotByPlate(plate)).thenReturn(true);
+        when(parkingSystemService.addCar(eq(plate), any(UriComponentsBuilder.class)))
+                .thenReturn(ResponseEntity.badRequest().build());
 
         ResponseEntity<Void> response = controller.addCar(plate, ucb);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-        verify(parkingSystemRepository, never()).save(any());
+        verify(parkingSystemService).addCar(eq(plate), any(UriComponentsBuilder.class));
     }
 
     // tests for removeCar() endpoint
     @Test
     void removeCarCarNotFound() {
         String plate = "NOTFOUND";
-        when(parkingSystemRepository.findByPlate(plate)).thenReturn(null);
+        when(parkingSystemService.removeCar(plate))
+                .thenReturn(ResponseEntity.notFound().build());
 
         ResponseEntity<Void> response = controller.removeCar(plate);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        verify(parkingSystemRepository, never()).save(any());
+        verify(parkingSystemService).removeCar(plate);
     }
 
     @Test
     void removeCarCarWithNullValues() {
         String plate = "NULLPLATE";
-        Car car = new Car(plate, null, true, 0, null, null);
-        when(parkingSystemRepository.findByPlate(plate)).thenReturn(car);
+        when(parkingSystemService.removeCar(plate))
+                .thenReturn(ResponseEntity.badRequest().build());
 
         ResponseEntity<Void> response = controller.removeCar(plate);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-        verify(parkingSystemRepository, never()).save(any());
+        verify(parkingSystemService).removeCar(plate);
     }
 
     // tests for addOfficialCar() endpoint
     @Test
     void addOfficialCarNewOfficialCar() {
         String plate = "OFF123";
-        when(parkingSystemRepository.existsByPlate(plate)).thenReturn(false);
+        when(parkingSystemService.addOfficialCar(plate))
+                .thenReturn(ResponseEntity.ok().build());
 
         ResponseEntity<Void> response = controller.addOfficialCar(plate);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        verify(parkingSystemRepository).save(any(Car.class));
+        verify(parkingSystemService).addOfficialCar(plate);
     }
 
     @Test
     void addOfficialCarAlreadyExists() {
         String plate = "OFF123";
-        when(parkingSystemRepository.existsByPlate(plate)).thenReturn(true);
+        when(parkingSystemService.addOfficialCar(plate))
+                .thenReturn(ResponseEntity.badRequest().build());
 
         ResponseEntity<Void> response = controller.addOfficialCar(plate);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-        verify(parkingSystemRepository, never()).save(any());
+        verify(parkingSystemService).addOfficialCar(plate);
     }
 
     // tests for addResidentCar() endpoint
     @Test
     void addResidentCarNewResidentCar() {
         String plate = "OFF123";
-        when(parkingSystemRepository.existsByPlate(plate)).thenReturn(false);
+        when(parkingSystemService.addResidentCar(plate))
+                .thenReturn(ResponseEntity.ok().build());
 
         ResponseEntity<Void> response = controller.addResidentCar(plate);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        verify(parkingSystemRepository).save(any(Car.class));
+        verify(parkingSystemService).addResidentCar(plate);
     }
 
     @Test
     void addResidentCarAlreadyExists() {
         String plate = "OFF123";
-        when(parkingSystemRepository.existsByPlate(plate)).thenReturn(true);
+        when(parkingSystemService.addResidentCar(plate))
+                .thenReturn(ResponseEntity.badRequest().build());
 
         ResponseEntity<Void> response = controller.addResidentCar(plate);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-        verify(parkingSystemRepository, never()).save(any());
+        verify(parkingSystemService).addResidentCar(plate);
     }
 
     // tests for startMonth() endpoint
     @Test
     void startMonthNoCars() {
-        Iterable<Car> emptyList = Collections.emptyList();
-        when(parkingSystemRepository.findAll()).thenReturn(emptyList);
+        when(parkingSystemService.startMonth())
+                .thenReturn(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 
         ResponseEntity<Void> response = controller.startMonth();
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        verify(parkingSystemRepository, never()).delete(any());
-        verify(parkingSystemRepository, never()).save(any());
+        verify(parkingSystemService).startMonth();
     }
 
     @Test
     void startMonthVerifyOperations() {
-        Car official = new Car("OFF1", "OFFICIAL", false, 100, null, null);
-        Car resident = new Car("RES1", "RESIDENT", false, 200, null, null);
-        Iterable<Car> cars = Arrays.asList(official, resident);
-        when(parkingSystemRepository.findAll()).thenReturn(cars);
+        when(parkingSystemService.startMonth())
+                .thenReturn(ResponseEntity.ok().build());
 
         ResponseEntity<Void> response = controller.startMonth();
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        verify(parkingSystemRepository).delete(official);
-        verify(parkingSystemRepository).save(argThat(car ->
-                car.plate().equals("RES1") &&
-                        car.type().equals("RESIDENT") &&
-                        car.stayingMinutes() == 0
-        ));
+        verify(parkingSystemService).startMonth();
     }
+
 
     // tests for generateResidentPaymentsReport() endpoint
     @Test
     void generateResidentPaymentsReportNoCars() {
-        when(parkingSystemRepository.findAll()).thenReturn(Collections.emptyList());
+        when(parkingSystemService.generateResidentPaymentsReport())
+                .thenReturn(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 
         ResponseEntity<String> response = controller.generateResidentPaymentsReport();
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        assertThat(response.getBody()).isNull();
+        verify(parkingSystemService).generateResidentPaymentsReport();
     }
 
     @Test
-    void generateResidentPaymentsReportReturnsReport() {
-        Car resident1 = new Car("RES1", "RESIDENT", false, 120, null, null);
-        Car resident2 = new Car("RES2", "RESIDENT", false, 60, null, null);
-        Car official = new Car("OFF1", "OFFICIAL", false, 100, null, null);
-        Iterable<Car> cars = Arrays.asList(resident1, resident2, official);
-        when(parkingSystemRepository.findAll()).thenReturn(cars);
+    void generateResidentPaymentsReportOk() {
+        String report = "Plate \tStaying time (min)\tPayment\nRES1\t100\t5.00\n";
+        when(parkingSystemService.generateResidentPaymentsReport())
+                .thenReturn(ResponseEntity.ok(report));
 
         ResponseEntity<String> response = controller.generateResidentPaymentsReport();
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        String body = response.getBody();
-        assertThat(body).contains("Plate \tStaying time (min)\tPayment");
-        assertThat(body).contains("RES1\t120\t6.00");
-        assertThat(body).contains("RES2\t60\t3.00");
-        assertThat(body).doesNotContain("OFF1");
+        assertThat(response.getBody()).isEqualTo(report);
+        verify(parkingSystemService).generateResidentPaymentsReport();
     }
 }
