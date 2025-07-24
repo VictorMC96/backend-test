@@ -1,0 +1,31 @@
+# Compilados de Java
+/target/
+*.class
+
+# Archivos de log
+*.log
+
+# Archivos de configuración de IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# Archivos de configuración de Eclipse
+*.classpath
+*.project
+*.settings/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Maven
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+
+# Archivos de entorno
+.env
+
+# Archivos de pruebas
+test-output/
