@@ -1,0 +1,347 @@
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1747628786696
+  modified: 1747628786696
+collection:
+  - name: Template
+    meta:
+      id: fld_b6c12861ce9e48869aab4ef3cb8d6e0d
+      created: 1747628874088
+      modified: 1753411132480
+      sortKey: -1747628874088
+    children:
+      - name: Users
+        meta:
+          id: fld_778d711d157143cea656d3aad8ec3699
+          created: 1751683016372
+          modified: 1751683016372
+          sortKey: -1751683016372
+      - name: Logs
+        meta:
+          id: fld_991eca669c9440d8a966ce6c857a64dd
+          created: 1751683040871
+          modified: 1751683040871
+          sortKey: -1751683040871
+  - name: artistas_ecuatorianas
+    meta:
+      id: fld_1dadc01e696d4215a56b2f082020bc2f
+      created: 1753411169955
+      modified: 1753411169955
+      sortKey: -1753411169955
+    children:
+      - name: content
+        meta:
+          id: fld_2d6f0fd9d5a040f6a1d91f4eccda91d7
+          created: 1753411180965
+          modified: 1753411180965
+          sortKey: -1753411180965
+      - name: system
+        meta:
+          id: fld_427f232fff0e49009a15f81e9c646fdc
+          created: 1753411188565
+          modified: 1753685929435
+          sortKey: -1753411188565
+        children:
+          - name: Perfiles
+            meta:
+              id: fld_7b8c12c0461340c7ba10e4efa577f28a
+              created: 1753685883373
+              modified: 1753685896593
+              sortKey: -1753685883373
+          - name: Usuarios
+            meta:
+              id: fld_a6ca28e06b5040598afecc548f4913df
+              created: 1753685936503
+              modified: 1753685936503
+              sortKey: -1753685936503
+          - name: Secciones
+            meta:
+              id: fld_44b4e9c8e5984b14b21264de3d77cfe9
+              created: 1753760352086
+              modified: 1753760352086
+              sortKey: -1753760352087
+  - name: EstacionamientoCollection
+    meta:
+      id: fld_b84e94b9fe894101b6e1bc20a16a1904
+      created: 1753818555575
+      modified: 1753831957321
+      sortKey: -1753818555575
+    children:
+      - url: http://localhost:8080/estacionamiento/api/v1/vehiculos/findAll
+        name: vehiculos_findAll
+        meta:
+          id: req_f671f086672a4cb0aef5334bcffbbdfd
+          created: 1753818557860
+          modified: 1753829221861
+          isPrivate: false
+          sortKey: -1753818557860
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/tipos_vehiculo/findAll
+        name: tipos_vehiculos_findAll
+        meta:
+          id: req_c623b72d6894408cbd5091d3d1c74abc
+          created: 1753819360649
+          modified: 1753827039332
+          isPrivate: false
+          sortKey: -1753791280775
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/vehiculos/registrar
+        name: vehiculo_RegistrarCualquiera
+        meta:
+          id: req_e8f64420295b4b1daf48da3467c15da4
+          created: 1753819384192
+          modified: 1753829258625
+          isPrivate: false
+          sortKey: -1753818661151.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"placa":"RESIDENTE2",
+            	"tipoVehiculo" : {
+            		"id_tipoVehiculo": 2
+            	}
+            }	
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/registros/entrada/R2-CCCC
+        name: RegistrarEntrada
+        meta:
+          id: req_e4dc23ecfa844b4b9e427d7f94d76a4d
+          created: 1753820499384
+          modified: 1753829310801
+          isPrivate: false
+          sortKey: -1753820499384
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/registros/salida/R1-BBBB
+        name: RegistrarSalida
+        meta:
+          id: req_41e8b5847dcb4e5a8f7b53ca83ecc949
+          created: 1753821520496
+          modified: 1753829366024
+          isPrivate: false
+          sortKey: -1753820359985
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/vehiculos/registrarResidente
+        name: vehiculo_RegistrarResidente
+        meta:
+          id: req_687f623c814644c88ff3160740b90072
+          created: 1753823739135
+          modified: 1753829070596
+          isPrivate: false
+          sortKey: -1753818971026
+        method: POST
+        body:
+          mimeType: application/json
+          text: R2-CCCC
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/vehiculos/registrarOficial
+        name: vehiculo_RegistrarOficial
+        meta:
+          id: req_39bdf510572d41429006881f6a85acfa
+          created: 1753823752249
+          modified: 1753829147394
+          isPrivate: false
+          sortKey: -1753818764443
+        method: POST
+        body:
+          mimeType: application/json
+          text: OF2-BBBB
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/reportes/obtenerPagosResidentes/reporte1
+        name: GenerarReporte
+        meta:
+          id: req_d6da5f44e3d844fd9226b5b8188f802d
+          created: 1753826575581
+          modified: 1753829255703
+          isPrivate: false
+          sortKey: -1753820290285.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/vehiculos/findAllByTipoVehiculoNombre/OFICIAL
+        name: vehiculos_findAllOficiales
+        meta:
+          id: req_4f5d97cf10ca410cb70ccd119c8a397c
+          created: 1753827999887
+          modified: 1753829204004
+          isPrivate: false
+          sortKey: -1753804919317.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/gestion/comenzarMes
+        name: ComenzarMes
+        meta:
+          id: req_f52e3ad0d64047b4b0315db8e0e7dff6
+          created: 1753828749222
+          modified: 1753828759190
+          isPrivate: false
+          sortKey: -1753820220586
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/estacionamiento/api/v1/vehiculos/findAllByTipoVehiculoNombre/RESIDENTE
+        name: vehiculos_findAllResidente
+        meta:
+          id: req_895aecd56cbe4a30867968fc2f70b089
+          created: 1753829182527
+          modified: 1753829232698
+          isPrivate: false
+          sortKey: -1753798100046.25
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1747628830324
+    modified: 1747707273595
+  cookies:
+    - key: XSRF-TOKEN
+      value: eyJpdiI6IkZ0cHd3eTFUVXhEQlloUHdWNnJWdlE9PSIsInZhbHVlIjoiMFVzTlFTeFhwNHRaczhSdXNFREoyRFg0SWMvdXYvSjZocWNzdWFXcEJROUhqSURuVVRScVUvd3pRb1kwWjNxZERYVzNpSVhSbDVKb1hUMTE5NlJMdTA1WHFaTi9kWUJpaUZnY2FKUnUrb0htblhWZzZZeGtqOHVuSmRrbHh6cjMiLCJtYWMiOiI2ZmQxZTllYzY3MTIxMzMzNzRhMzQ4YTI1MzRlNjBlNTM2NDY3OWJkM2FhNmY1ZDlhNmQyMDVmNzA1OWVmZGY0IiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: localhost
+      path: /
+      hostOnly: true
+      creation: 2025-05-20T02:14:33.591Z
+      lastAccessed: 2025-05-20T02:14:33.591Z
+      sameSite: lax
+      id: 13dd6f0d-ad90-4b63-85ab-8c40ad3cc3cf
+    - key: laravel_session
+      value: eyJpdiI6IndnSVlxTytkZVRVOUI2WFFkbi9JSUE9PSIsInZhbHVlIjoieXY5QWhjbGl6RmVRd1JpWGU0bUdiMDhkSnFNa0x5clFVa1F0SGZtMk8xZDNnNE9YWmFpMHlRRithNCtQNnZpZUVWM2dtWDd5eFpFeEFwdGVGUDJDYnM1aDJtbE1vQWtXYy9rNUtwVDMrUlJnaHl4MXZoVHY2SVhJQmswSndDbHEiLCJtYWMiOiJjMzU3MGQ4NDZmMjhjZTVlZDlmY2E4MzIyYTRlMzE1MmUyNTBkOTU2NjhlODU2ZjZlMzg5ZDA5NmEzODRiZjdkIiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: localhost
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-20T02:14:33.594Z
+      lastAccessed: 2025-05-20T02:14:33.594Z
+      sameSite: lax
+      id: abe839d3-a05e-4f02-b21c-289550a13590
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1747628830098
+    modified: 1747628830098
+    isPrivate: false
