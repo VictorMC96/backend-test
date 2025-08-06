@@ -1,0 +1,191 @@
+type: collection.insomnia.rest/5.0
+name: usuario
+meta:
+  id: wrk_88745cad2e3d40e28289026987759b79
+  created: 1751478618797
+  modified: 1751478618797
+  description: ""
+collection:
+  - name: PERSONAL
+    meta:
+      id: fld_bf5554b1b2c64db786b5f28170c4965a
+      created: 1753839686580
+      modified: 1753839686580
+      sortKey: -1753839686580
+      description: ""
+    children:
+      - url: http://localhost:8082/parking/addOfficial
+        name: addofficial
+        meta:
+          id: req_ff8a617130844dd88936a768caea7a0f
+          created: 1753839689290
+          modified: 1753841631161
+          isPrivate: false
+          description: ""
+          sortKey: -1753839689290
+        method: POST
+        parameters:
+          - id: pair_a853045192d3429db4e05314201e0e80
+            name: numberPlate
+            value: "2020"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8082/parking/addResident
+        name: addResidente
+        meta:
+          id: req_6358aad3d49f4004ba3405a3f1a2ed37
+          created: 1753841646929
+          modified: 1753843891345
+          isPrivate: false
+          description: ""
+          sortKey: -1752741612973.5
+        method: POST
+        parameters:
+          - id: pair_a853045192d3429db4e05314201e0e80
+            name: numberPlate
+            value: "2021"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8082/parking/registerEntry
+        name: RegistraEntrada
+        meta:
+          id: req_823ce7486b8049d99295f2659f1d5b59
+          created: 1753841775658
+          modified: 1753843908322
+          isPrivate: false
+          description: ""
+          sortKey: -1752192574815.25
+        method: POST
+        parameters:
+          - id: pair_a853045192d3429db4e05314201e0e80
+            name: numberPlate
+            value: "2021"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8082/parking/registerExit
+        name: RegistraSalida
+        meta:
+          id: req_a13cd2278c58489dac3458f2e5304014
+          created: 1753842218072
+          modified: 1753843956378
+          isPrivate: false
+          description: ""
+          sortKey: -1751918055736.125
+        method: POST
+        parameters:
+          - id: pair_a853045192d3429db4e05314201e0e80
+            name: numberPlate
+            value: "2021"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8082/parking/initMonth
+        name: reinicia
+        meta:
+          id: req_a4aaff7e15dd4d6a938158ce49d5d772
+          created: 1753842650912
+          modified: 1753842666647
+          isPrivate: false
+          description: ""
+          sortKey: -1751780796196.5625
+        method: POST
+        parameters:
+          - id: pair_a853045192d3429db4e05314201e0e80
+            name: numberPlate
+            value: "2028"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8082/parking/payResident
+        name: files
+        meta:
+          id: req_a8ccf4f4ab174d16b50e5ddcfbeed432
+          created: 1753842952730
+          modified: 1753843604350
+          isPrivate: false
+          description: ""
+          sortKey: -1751712166426.7812
+        method: POST
+        parameters:
+          - id: pair_a853045192d3429db4e05314201e0e80
+            name: fileName
+            value: prueba.txt
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_46541529906faace9776945f7fd36b8859db4c86
+    created: 1751478618831
+    modified: 1751478618831
+environments:
+  name: Base Environment
+  meta:
+    id: env_46541529906faace9776945f7fd36b8859db4c86
+    created: 1751478618825
+    modified: 1751478618825
+    isPrivate: false
