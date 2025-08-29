@@ -1,0 +1,581 @@
+<mxfile host="65bd71144e" pages="7">
+    <diagram id="uml-class-diagram" name="UML Class Diagram">
+        <mxGraphModel dx="1069" dy="442" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="n_ctrl" value="«Controller»&lt;br&gt;&lt;b&gt;EstacionamientoController&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+altaOficial(placa): ResponseEntity&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+altaResidente(placa): ResponseEntity&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+registrarEntrada(placa): ResponseEntity&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+registrarSalida(placa): ResponseEntity&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+comenzarMes(): ResponseEntity&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+reporteResidentes(): ResponseEntity&lt;/span&gt;&lt;/div&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="260" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_svc" value="«Service»&lt;br&gt;&lt;b&gt;EstacionamientoService&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+registrarVehiculoOficial(placa): void&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+registrarVehiculoResidente(placa): void&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+registrarEntrada(placa): void&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+registrarSalida(placa): double&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+comenzarMes(): void&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+generarReportePagos(): void&lt;/span&gt;&lt;/div&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="40" width="280" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_vrepo" value="&amp;laquo;Repository&amp;raquo;&lt;br/&gt;&lt;b&gt;VehiculoRepository&lt;/b&gt;&lt;hr/&gt;(JpaRepository&lt;Vehiculo, String&gt;)" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="775" y="40" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_erepo" value="«Repository»&lt;br&gt;&lt;b&gt;EstanciaRepository&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+findByVehiculo(v): List&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+findTopByVehiculoOrderByEntradaDesc(v): Estancia&lt;/span&gt;&lt;/div&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="775" y="200" width="240" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_veh" value="«Entity»&lt;br&gt;&lt;b&gt;Vehiculo&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+placa: String&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+tipo: TipoVehiculo&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+minutosAcumulados: int&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+estancias: List&lt;/span&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+getPlaca()&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+getTipo()&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+getMinutosAcumulados()&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+getEstancias()&lt;/span&gt;&lt;/div&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="270" width="280" height="186" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_est" value="«Entity»&lt;br&gt;&lt;b&gt;Estancia&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+id: Long&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+entrada: Date&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+salida: Date&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+vehiculo: Vehiculo&lt;/span&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+getEntrada()&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+getSalida()&lt;/span&gt;&lt;/div&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="296" width="260" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_tipo" value="«Enum»&lt;br&gt;&lt;b&gt;TipoVehiculo&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;OFICIAL&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;RESIDENTE&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;NO_RESIDENTE&lt;/span&gt;&lt;/div&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="486" width="280" height="104" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_fecha" value="«Utility»&lt;br&gt;&lt;b&gt;FechaUtils&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+difEnMinutos(inicial: Calendar, fin: Calendar): int&lt;/span&gt;&lt;/div&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="775" y="360" width="240" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_ctrl_svc" value="&amp;laquo;uses&amp;raquo;" style="endArrow=block;html=1;rounded=0;" parent="1" source="n_ctrl" target="n_svc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_svc_vrepo" value="&amp;laquo;uses&amp;raquo;" style="endArrow=block;html=1;rounded=0;" parent="1" source="n_svc" target="n_vrepo" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_svc_erepo" value="&amp;laquo;uses&amp;raquo;" style="endArrow=block;html=1;rounded=0;" parent="1" source="n_svc" target="n_erepo" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_svc_utils" value="&amp;laquo;uses&amp;raquo;" style="dashed=1;endArrow=open;html=1;" parent="1" source="n_svc" target="n_fecha" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_veh_est" value="1..* estancias" style="endArrow=block;html=1;" parent="1" source="n_veh" target="n_est" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_est_veh" value="1 vehiculo" style="endArrow=block;html=1;" parent="1" source="n_est" target="n_veh" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_veh_tipo" value="&amp;laquo;enum&amp;raquo;" style="dashed=1;endArrow=open;html=1;" parent="1" source="n_veh" target="n_tipo" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="seq:-post-/alta/oficial/" name="Seq: POST /alta/oficial/{placa}">
+        <mxGraphModel dx="1069" dy="442" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="lf_0_Seq:" value="&lt;b&gt;Cliente&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_0_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_1_Seq:" value="&lt;b&gt;EstacionamientoController&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_1_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_2_Seq:" value="&lt;b&gt;EstacionamientoService&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_2_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_3_Seq:" value="&lt;b&gt;VehiculoRepository&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_3_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" parent="1" vertex="1">
+                    <mxGeometry x="730" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="msg_0_Seq:" value="POST /alta/oficial/{placa}" style="endArrow=block;html=1;rounded=0;" parent="1" source="lf_0_Seq:" target="lf_1_Seq:" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="130" y="100"/>
+                            <mxPoint x="330" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_1_Seq:" value="registrarVehiculoOficial(placa)" style="endArrow=block;html=1;rounded=0;" parent="1" source="lf_1_Seq:" target="lf_2_Seq:" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="160"/>
+                            <mxPoint x="530" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_2_Seq:" value="save(new Vehiculo(placa, OFICIAL))" style="endArrow=block;html=1;rounded=0;" parent="1" source="lf_2_Seq:" target="lf_3_Seq:" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="220"/>
+                            <mxPoint x="730" y="220"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_3_Seq:" value="void" style="endArrow=block;html=1;rounded=0;" parent="1" source="lf_2_Seq:" target="lf_1_Seq:" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="280"/>
+                            <mxPoint x="330" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_4_Seq:" value="200 OK — &quot;Vehículo oficial registrado&quot;" style="endArrow=block;html=1;rounded=0;" parent="1" source="lf_1_Seq:" target="lf_0_Seq:" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="340"/>
+                            <mxPoint x="130" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="seq:-post-/alta/resident" name="Seq: POST /alta/residente/{placa}">
+        <mxGraphModel>
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="lf_0_Seq:" value="&lt;b&gt;Cliente&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_0_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_1_Seq:" value="&lt;b&gt;EstacionamientoController&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_1_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_2_Seq:" value="&lt;b&gt;EstacionamientoService&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_2_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_3_Seq:" value="&lt;b&gt;VehiculoRepository&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_3_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="msg_0_Seq:" value="POST /alta/residente/{placa}" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_0_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="130" y="100"/>
+                            <mxPoint x="330" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_1_Seq:" value="registrarVehiculoResidente(placa)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_2_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="160"/>
+                            <mxPoint x="530" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_2_Seq:" value="save(new Vehiculo(placa, RESIDENTE))" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_3_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="220"/>
+                            <mxPoint x="730" y="220"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_3_Seq:" value="void" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="280"/>
+                            <mxPoint x="330" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_4_Seq:" value="200 OK — &quot;Vehículo residente registrado&quot;" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_0_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="340"/>
+                            <mxPoint x="130" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="seq:-post-/entrada/{plac" name="Seq: POST /entrada/{placa}">
+        <mxGraphModel>
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="lf_0_Seq:" value="&lt;b&gt;Cliente&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_0_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_1_Seq:" value="&lt;b&gt;EstacionamientoController&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_1_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_2_Seq:" value="&lt;b&gt;EstacionamientoService&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_2_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_3_Seq:" value="&lt;b&gt;VehiculoRepository&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_3_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_4_Seq:" value="&lt;b&gt;EstanciaRepository&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="840" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_4_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="930" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="msg_0_Seq:" value="POST /entrada/{placa}" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_0_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="130" y="100"/>
+                            <mxPoint x="330" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_1_Seq:" value="registrarEntrada(placa)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_2_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="160"/>
+                            <mxPoint x="530" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_2_Seq:" value="findById(placa) | or save NO_RESIDENTE" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_3_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="220"/>
+                            <mxPoint x="730" y="220"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_3_Seq:" value="save(new Estancia(now, null, vehiculo))" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_4_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="280"/>
+                            <mxPoint x="930" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_4_Seq:" value="void" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="340"/>
+                            <mxPoint x="330" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_5_Seq:" value="200 OK — &quot;Entrada registrada&quot;" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_0_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="400"/>
+                            <mxPoint x="130" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="seq:-post-/salida/{placa" name="Seq: POST /salida/{placa}">
+        <mxGraphModel>
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="lf_0_Seq:" value="&lt;b&gt;Cliente&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_0_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_1_Seq:" value="&lt;b&gt;EstacionamientoController&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_1_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_2_Seq:" value="&lt;b&gt;EstacionamientoService&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_2_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_3_Seq:" value="&lt;b&gt;VehiculoRepository&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_3_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_4_Seq:" value="&lt;b&gt;EstanciaRepository&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="840" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_4_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="930" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_5_Seq:" value="&lt;b&gt;FechaUtils&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1040" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_5_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="1130" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="msg_0_Seq:" value="POST /salida/{placa}" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_0_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="130" y="100"/>
+                            <mxPoint x="330" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_1_Seq:" value="registrarSalida(placa)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_2_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="160"/>
+                            <mxPoint x="530" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_2_Seq:" value="findById(placa)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_3_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="220"/>
+                            <mxPoint x="730" y="220"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_3_Seq:" value="findTopByVehiculoOrderByEntradaDesc(vehiculo)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_4_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="280"/>
+                            <mxPoint x="930" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_4_Seq:" value="difEnMinutos(entrada, now)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_5_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="340"/>
+                            <mxPoint x="1130" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_5_Seq:" value="save(estancia with salida=now)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_4_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="400"/>
+                            <mxPoint x="930" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_6_Seq:" value="save(vehiculo actualizado si RESIDENTE)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_3_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="460"/>
+                            <mxPoint x="730" y="460"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_7_Seq:" value="double monto | 0" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="520"/>
+                            <mxPoint x="330" y="520"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_8_Seq:" value="200 OK — &quot;Monto a pagar&quot; | &quot;Salida registrada&quot;" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_0_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="580"/>
+                            <mxPoint x="130" y="580"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="seq:-post-/comenzar-mes" name="Seq: POST /comenzar-mes">
+        <mxGraphModel>
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="lf_0_Seq:" value="&lt;b&gt;Cliente&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_0_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_1_Seq:" value="&lt;b&gt;EstacionamientoController&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_1_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_2_Seq:" value="&lt;b&gt;EstacionamientoService&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_2_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_3_Seq:" value="&lt;b&gt;VehiculoRepository&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_3_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_4_Seq:" value="&lt;b&gt;EstanciaRepository&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="840" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_4_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="930" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="msg_0_Seq:" value="POST /comenzar-mes" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_0_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="130" y="100"/>
+                            <mxPoint x="330" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_1_Seq:" value="comenzarMes()" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_2_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="160"/>
+                            <mxPoint x="530" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_2_Seq:" value="findAll()" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_3_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="220"/>
+                            <mxPoint x="730" y="220"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_3_Seq:" value="saveAll(residentes con minutos=0)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_3_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="280"/>
+                            <mxPoint x="730" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_4_Seq:" value="deleteAll(estancias de OFICIAL)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_4_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="340"/>
+                            <mxPoint x="930" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_5_Seq:" value="void" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="400"/>
+                            <mxPoint x="330" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_6_Seq:" value="200 OK — mensaje de confirmación" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_0_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="460"/>
+                            <mxPoint x="130" y="460"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="seq:-get-/reportes/resid" name="Seq: GET /reportes/residentes">
+        <mxGraphModel>
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="lf_0_Seq:" value="&lt;b&gt;Cliente&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_0_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_1_Seq:" value="&lt;b&gt;EstacionamientoController&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_1_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_2_Seq:" value="&lt;b&gt;EstacionamientoService&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_2_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_3_Seq:" value="&lt;b&gt;VehiculoRepository&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_3_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="lf_4_Seq:" value="&lt;b&gt;FileSystem&lt;/b&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="840" y="20" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="line_4_Seq:" value="" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;strokeColor=#999;" vertex="1" parent="1">
+                    <mxGeometry x="930" y="60" width="2" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="msg_0_Seq:" value="GET /reportes/residentes" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_0_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="130" y="100"/>
+                            <mxPoint x="330" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_1_Seq:" value="generarReportePagos()" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_2_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="160"/>
+                            <mxPoint x="530" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_2_Seq:" value="findAll()" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_3_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="220"/>
+                            <mxPoint x="730" y="220"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_3_Seq:" value="BufferedWriter.write(...)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_4_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="280"/>
+                            <mxPoint x="930" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_4_Seq:" value="void" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_2_Seq:" target="lf_1_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="530" y="340"/>
+                            <mxPoint x="330" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="msg_5_Seq:" value="200 OK — &quot;Archivo generado correctamente.&quot;" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="lf_1_Seq:" target="lf_0_Seq:">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="400"/>
+                            <mxPoint x="130" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
