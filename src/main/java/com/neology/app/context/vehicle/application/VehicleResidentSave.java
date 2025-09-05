@@ -21,10 +21,12 @@ public class VehicleResidentSave {
             throw new RuntimeException("The vehicle is not resident");
         }
 
-        residentAccountRepository.save(new ResidentAccount(
-                0, vehicle));
+        Vehicle savedVehicle = vehicleRepository.save(vehicle);
 
-        return vehicleRepository.save(vehicle);
+        residentAccountRepository.save(new ResidentAccount(
+                0, savedVehicle));
+
+        return savedVehicle;
     }
 
 }
