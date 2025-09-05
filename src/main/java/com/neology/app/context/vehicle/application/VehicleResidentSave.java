@@ -1,6 +1,7 @@
 package com.neology.app.context.vehicle.application;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.neology.app.context.account.domain.ResidentAccount;
 import com.neology.app.context.account.domain.ResidentAccountRepository;
@@ -16,6 +17,7 @@ public class VehicleResidentSave {
     private final VehicleRepository vehicleRepository;
     private final ResidentAccountRepository residentAccountRepository;
 
+    @Transactional
     public Vehicle save(Vehicle vehicle) {
         if (vehicle.getType() != VehicleType.RESIDENT) {
             throw new RuntimeException("The vehicle is not resident");

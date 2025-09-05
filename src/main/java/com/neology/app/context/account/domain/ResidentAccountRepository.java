@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface ResidentAccountRepository {
     ResidentAccount save(ResidentAccount account);
 
-    Optional<ResidentAccount> findByPlate(String plate);
+    Optional<ResidentAccount> findByVehiclePlate(String plate);
 
     List<ResidentAccount> findAll();
 }

@@ -3,6 +3,7 @@ package com.neology.app.context.parking.application;
 import java.util.Calendar;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.neology.app.context.account.domain.ResidentAccountRepository;
 import com.neology.app.context.amount.domain.Amount;
@@ -25,6 +26,7 @@ public class ParkingRegisterExit {
     private final VehicleRepository vehicleRepository;
     private final ResidentAccountRepository residentAccountRepository;
 
+    @Transactional
     public Amount run(String plate) {
         Vehicle vehicle = this.vehicleRepository.findById(plate).orElseThrow(
                 () -> new IllegalArgumentException("the plate not exists"));

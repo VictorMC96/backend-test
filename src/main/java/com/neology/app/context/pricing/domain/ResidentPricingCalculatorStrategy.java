@@ -15,7 +15,7 @@ public class ResidentPricingCalculatorStrategy implements PricingCalculatorStrat
 
     @Override
     public void accumulateMinute(String plate, int minutes) {
-        var account = this.residentAccountRepository.findByPlate(plate)
+        var account = this.residentAccountRepository.findByVehiclePlate(plate)
                 .orElseThrow(() -> new IllegalArgumentException("Resident account not found"));
 
         account.setAccumulatedMinutes(account.getAccumulatedMinutes() + minutes);

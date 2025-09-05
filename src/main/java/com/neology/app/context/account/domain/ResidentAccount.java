@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "resident_accounts")
 @Getter
 @Setter
+@Table(name = "resident_accounts")
 @NoArgsConstructor
 public class ResidentAccount {
 
@@ -30,7 +30,7 @@ public class ResidentAccount {
     private int accumulatedMinutes;
 
     @OneToOne
-    @JoinColumn(name = "plate", nullable = false, unique = true)
+    @JoinColumn(name = "vehicle_plate", referencedColumnName = "plate")
     @JsonIgnore
     private Vehicle vehicle;
 
@@ -38,5 +38,4 @@ public class ResidentAccount {
         this.accumulatedMinutes = accumulatedMinutes;
         this.vehicle = vehicle;
     }
-
 }
