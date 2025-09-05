@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.neology.app.context.amount.domain.Amount;
 import com.neology.app.context.parking.application.ParkingRegisterEntry;
+import com.neology.app.context.parking.application.ParkingRegisterExit;
 import com.neology.app.context.vehicle.application.VehicleOfficialSave;
 import com.neology.app.context.vehicle.application.VehicleResidentSave;
 import com.neology.app.context.vehicle.domain.Vehicle;
@@ -21,6 +23,7 @@ public class ParkingController {
     private final VehicleOfficialSave vehicleOfficialSave;
     private final VehicleResidentSave vehicleResidentSave;
     private final ParkingRegisterEntry parkingRegisterEntry;
+    private final ParkingRegisterExit parkingRegisterExit;
 
     @PostMapping("/register-vehicle/official")
     public Vehicle createOfficial(@RequestBody @Valid Vehicle vehicle) {
@@ -34,12 +37,16 @@ public class ParkingController {
 
     @PostMapping("/register-entry/{plate}")
     public void registerEntry(@PathVariable(value = "") String plate) {
-        parkingRegisterEntry.save(plate);
+        parkingRegisterEntry.run(plate);
     }
 
     @PostMapping("/register-exit/{plate}")
-    public void registerExit(@PathVariable(value = "") String plate) {
-        System.out.println(plate);
+    public Amount registerExit(@PathVariable(value = "") String plate) {
+        return parkingRegisterExit.run(plate);
+    }
+
+    @PostMapping("/starting-month")
+    public void startingMonth() {
     }
 
 }

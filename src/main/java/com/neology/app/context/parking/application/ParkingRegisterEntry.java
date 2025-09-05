@@ -18,7 +18,7 @@ public class ParkingRegisterEntry {
     private final ParkingRegisterRepository parkingRegisterRepository;
     private final VehicleRepository vehicleRepository;
 
-    public void save(String plate) {
+    public void run(String plate) {
         Vehicle vehicle = this.vehicleRepository.findById(plate).orElseThrow(
                 () -> new IllegalArgumentException("the plate not exists"));
 
