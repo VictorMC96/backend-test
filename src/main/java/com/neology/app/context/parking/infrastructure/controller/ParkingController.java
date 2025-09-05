@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.neology.app.context.vehicle.application.VehicleOfficialSave;
 import com.neology.app.context.vehicle.application.VehicleResidentSave;
 import com.neology.app.context.vehicle.domain.Vehicle;
-import com.neology.app.context.vehicle.domain.VehicleRepository;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -17,20 +16,17 @@ import lombok.AllArgsConstructor;
 @RequestMapping("api/v1/parking")
 @AllArgsConstructor
 public class ParkingController {
-    private VehicleRepository vehicleRepository;
+    private final VehicleOfficialSave vehicleOfficialSave;
+    private final VehicleResidentSave vehicleResidentSave;
 
     @PostMapping("/register-vehicle/official")
     public Vehicle createOfficial(@RequestBody @Valid Vehicle vehicle) {
-        var vehicleSaver = new VehicleOfficialSave(vehicleRepository);
-
-        return vehicleSaver.save(vehicle);
+        return vehicleOfficialSave.save(vehicle);
     }
 
     @PostMapping("/register-vehicle/resident")
     public Vehicle createResident(@RequestBody @Valid Vehicle vehicle) {
-        var vehicleSaver = new VehicleResidentSave(vehicleRepository);
-
-        return vehicleSaver.save(vehicle);
+        return vehicleResidentSave.save(vehicle);
     }
 
 }

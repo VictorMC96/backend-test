@@ -1,9 +1,11 @@
 package com.neology.app.context.vehicle.application;
 
+import org.springframework.stereotype.Service;
 import com.neology.app.context.vehicle.domain.Vehicle;
 import com.neology.app.context.vehicle.domain.VehicleRepository;
 import com.neology.app.context.vehicle.domain.VehicleType;
 
+@Service
 public class VehicleOfficialSave {
     private final VehicleRepository vehicleRepository;
 
