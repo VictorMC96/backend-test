@@ -1,4 +1,6 @@
 package com.estacionamiento.parkingsystem.model;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,6 +9,18 @@ import lombok.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "vehiculos")
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "vehiculoTipo"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = VehiculoOficial.class, name = "oficial"),
+        @JsonSubTypes.Type(value = VehiculoResidente.class, name = "residente"),
+        @JsonSubTypes.Type(value = VehiculoNoResidente.class, name = "no_residente")
+})
+
 public abstract class Vehiculo {
 
     @Id
@@ -20,7 +34,6 @@ public abstract class Vehiculo {
     @Column(name = "tipo",nullable = false, length = 20)
     private TipoVehiculo tipo;
 
-    // Constructor vacío
     public Vehiculo() {
     }
 

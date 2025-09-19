@@ -44,7 +44,7 @@ public class EstacionamientoServiceImpl implements  EstacionamientoService{
 
         Estancia estancia = estanciaRepository.findFirstByVehiculoAndHoraSalidaIsNullOrderByHoraEntradaDesc(vehiculo);
         if (estancia == null) {
-            throw new RuntimeException("El vehículo no tiene una estancia abierta");
+            throw new RuntimeException("El vehículo no tiene una estancia abierta.");
         }
 
         estancia.setHoraSalida(LocalDateTime.now());
@@ -83,32 +83,15 @@ public class EstacionamientoServiceImpl implements  EstacionamientoService{
     @Override
     @Transactional
     public void comenzarMes() {
-        // Eliminar estancias de vehículos oficiales
-/*        List<Vehiculo> oficiales = vehiculoRepository.findByTipo(TipoVehiculo.OFICIAL);
-        for (Vehiculo oficial : oficiales) {
-            List<Estancia> estancias = estanciaRepository.findByVehiculo(oficial);
-            estanciaRepository.deleteAll(estancias);
-        }
 
-        // Resetear tiempo de residentes
-        List<Vehiculo> residentes = vehiculoRepository.findByTipo(TipoVehiculo.RESIDENTE);
-        for (Vehiculo v : residentes) {
-            if (v instanceof VehiculoResidente residente) {
-                residente.setTiempoAcumuladoMinutos(0);
-                vehiculoRepository.save(residente);
-            }
-        }*/
-
-    ///////////////////////////////////////////////////////////////////////////////
-
-        // 1. Borrar estancias de vehículos oficiales
+        // Borrar estancias de vehículos oficiales
         List<VehiculoOficial> oficiales = vehiculoRepository.findAllOficiales();
         for (VehiculoOficial v : oficiales) {
             List<Estancia> estancias = estanciaRepository.findAllByVehiculo(v);
             estanciaRepository.deleteAll(estancias);
         }
 
-        // 2. Resetear tiempo acumulado de residentes
+        // Resetear tiempo acumulado de residentes
         List<VehiculoResidente> residentes = vehiculoRepository.findAllResidentes();
         for (VehiculoResidente r : residentes) {
             r.setTiempoAcumuladoMinutos(0);

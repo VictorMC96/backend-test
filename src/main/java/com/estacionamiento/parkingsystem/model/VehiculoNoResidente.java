@@ -7,12 +7,11 @@ import lombok.*;
 @Setter
 @Entity
 public class VehiculoNoResidente extends  Vehiculo{
-    // Constructor vacío que llama al constructor vacío de la clase padre
+
     public VehiculoNoResidente() {
         super();
     }
 
-    // Constructor con placa y tipo
     public VehiculoNoResidente(String placa) {
         super(placa, TipoVehiculo.NO_RESIDENTE);
     }

@@ -27,7 +27,7 @@ public class VehiculoServiceImpl implements VehiculoService{
     @Override
     public Vehiculo obtenerPorId(Long id) {
         Optional<Vehiculo> vehiculo = vehiculoRepository.findById(id);
-        return vehiculo.orElse(null); // Puedes lanzar una excepción si prefieres
+        return vehiculo.orElse(null);
     }
 
     @Override
@@ -38,10 +38,10 @@ public class VehiculoServiceImpl implements VehiculoService{
     @Override
     public Vehiculo actualizarVehiculo(Long id, Vehiculo vehiculo) {
         if (vehiculoRepository.existsById(id)) {
-            vehiculo.setId(id); // Asegúrate de que tu entidad tenga el método setId
+            vehiculo.setId(id);
             return vehiculoRepository.save(vehiculo);
         }
-        return null; // O lanzar excepción
+        return null;
     }
 
     @Override

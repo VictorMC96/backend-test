@@ -53,9 +53,7 @@ public class EstacionamientoServiceImplTest {
         estancia.setHoraEntrada(LocalDateTime.now().minusMinutes(60)); // 60 min estacionado
     }
 
-    // =========================
-    // Registrar salida de No Residente
-    // =========================
+
     @Test
     void testRegistrarSalida_NoResidente() {
         when(vehiculoRepository.findByPlaca("NOR123")).thenReturn(Optional.of(vehiculoNoResidente));
@@ -68,12 +66,10 @@ public class EstacionamientoServiceImplTest {
         verify(estanciaRepository, times(1)).save(estancia);
     }
 
-    // =========================
-    // Registrar salida de Residente
-    // =========================
+
     @Test
     void testRegistrarSalida_Residente() {
-        // Crear una estancia para el residente
+
         estancia.setVehiculo(vehiculoResidente);
         when(vehiculoRepository.findByPlaca("RES123")).thenReturn(Optional.of(vehiculoResidente));
         when(estanciaRepository.findFirstByVehiculoAndHoraSalidaIsNullOrderByHoraEntradaDesc(vehiculoResidente))
@@ -86,9 +82,6 @@ public class EstacionamientoServiceImplTest {
         verify(estanciaRepository, times(1)).save(estancia);
     }
 
-    // =========================
-    // Registrar salida de Oficial
-    // =========================
 
     @Test
     void testRegistrarSalida_Oficial() {
@@ -103,40 +96,30 @@ public class EstacionamientoServiceImplTest {
         verify(estanciaRepository, times(1)).save(estancia);
     }
 
-///////////////////////////////////////////////////////////////////
 
-    // =========================
-    // Registrar entrada
-    // =========================
     @Test
     void testRegistrarEntrada() {
         when(vehiculoRepository.findByPlaca("NOR123")).thenReturn(Optional.of(vehiculoNoResidente));
 
         estacionamientoService.registrarEntrada("NOR123");
 
-        // Verifica que se creó una nueva estancia y se guardó
         verify(estanciaRepository, times(1)).save(any(Estancia.class));
     }
 
-    // =========================
-    // Dar de alta Vehiculo Oficial
-    // =========================
+
     @Test
     void testDarDeAltaVehiculoOficial() {
         estacionamientoService.darDeAltaVehiculoOficial("OFI999");
 
-        // Verifica que se guardó el vehículo en el repositorio
         verify(vehiculoRepository, times(1)).save(any(VehiculoOficial.class));
     }
 
-    // =========================
-    // Dar de alta Vehiculo Residente
-    // =========================
+
+
     @Test
     void testDarDeAltaVehiculoResidente() {
         estacionamientoService.darDeAltaVehiculoResidente("RES999");
 
-        // Verifica que se guardó el vehículo en el repositorio
         verify(vehiculoRepository, times(1)).save(any(VehiculoResidente.class));
     }
 
@@ -149,12 +132,10 @@ public class EstacionamientoServiceImplTest {
         when(vehiculoRepository.findAllResidentes()).thenReturn(residentes);
         when(estanciaRepository.findAllByVehiculo(vehiculoOficial)).thenReturn(List.of(estancia));
 
-        // tiempo previo de residente
         vehiculoResidente.setTiempoAcumuladoMinutos(120);
 
         estacionamientoService.comenzarMes();
 
-        // Verificaciones
         verify(estanciaRepository, times(1)).deleteAll(List.of(estancia));
         assertEquals(0, vehiculoResidente.getTiempoAcumuladoMinutos());
         verify(vehiculoRepository, times(1)).save(vehiculoResidente);
@@ -168,7 +149,6 @@ public class EstacionamientoServiceImplTest {
         String archivo = "test_informe.txt";
         estacionamientoService.generarInformePagos(archivo);
 
-        // Leer el archivo y verificar contenido
         List<String> lineas = Files.readAllLines(Paths.get(archivo));
 
         assertEquals(2, lineas.size()); // cabecera + 1 registro
@@ -177,7 +157,6 @@ public class EstacionamientoServiceImplTest {
         assertTrue(lineas.get(1).contains("200"));
         assertTrue(lineas.get(1).contains(String.format("%.2f", 200 * 0.05)));
 
-        // Limpiar archivo de prueba
         Files.delete(Paths.get(archivo));
     }
 
