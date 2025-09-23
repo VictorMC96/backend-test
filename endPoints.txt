@@ -1,0 +1,44 @@
+Registrar Vehiculo
+post
+http://localhost:8080/api/vehiculo/save
+
+{
+  "placa": "RES05",
+  "tipo": "RESIDENTE"
+}
+
+Registra hora de entrada
+post
+http://localhost:8080/api/registro/save?placa=RES05
+
+parameter
+
+placa=RES05
+
+
+Registra Salida
+post
+http://localhost:8080/api/registro/salida?placa=RES05
+
+parameter
+
+placa=RES05
+
+//Listar residentes
+get
+http://localhost:8080/api/reporte/listResidentes
+
+
+
+//Reiniciar tiempo o comenzar conteo
+post
+http://localhost:8080/api/control/reiniciaTiempo
+
+
+
+///Acceso a la bd en H2
+http://localhost:8080/h2-console/
+
+User: admin
+Password: admin
+
