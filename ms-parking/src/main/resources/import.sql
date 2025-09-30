@@ -1,0 +1,4 @@
+INSERT INTO VEHICLE (plate, id_type) VALUES('ABC-123-Z', 1);
+INSERT INTO VEHICLE (plate, id_type) VALUES('ZXC-789-L', 1);
+INSERT INTO VEHICLE (plate, id_type) VALUES('HYJ-166-C', 2);
+INSERT INTO VEHICLE (plate, id_type) VALUES('JKL-534-A', 2);
